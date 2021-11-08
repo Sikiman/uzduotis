@@ -1,0 +1,47 @@
+.scrollable-list{
+    height: 500px;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    float: left;
+}
+
+.list-group{
+    width: 40%;
+}
+
+#list-item{
+    color: blue;
+    border-width: 1px;
+    border-color:rgb(99, 99, 99);
+    text-align: left;
+}
+
+#name-div{
+    color: black;
+}
+
+#item-details{
+    color: black;
+    height: 100px;
+}
+
+#form{
+    float: right;
+    width: 30%;
+}
+
+#align-right{
+    text-align: right;
+}
+
+#delete-btn{
+    float: right;
+    width: 20%;
+}
+
+#details-div{
+    float: left;
+    width: 80%;
+    white-space: initial;
+}

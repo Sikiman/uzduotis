@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Prekės</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body ng-app="itemApp" ng-controller="itemController">
+
+
+    <div class="list-group">
+        <h3>Prekių sąrašas</h3>
+        <div class="row">
+            <label class="col-md-4">
+                <h4>&ensp;&ensp;&ensp;ID</h4>
+            </label>
+            <label class="col-md-4" id="name-div">
+                <h4>Pavadinimas</h4>
+            </label>
+            <label class="col-md-4" id="align-right">
+                <h4>Kaina&ensp;&ensp;&ensp;</h4>
+            </label>
+        </div>
+        <div class="scrollable-list">
+            <div ng-click="showDetails = !showDetails" class="list-group-item btn btn-default" id="list-item"
+                ng-repeat="item in items">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>{{ item.id }}</h5>
+                    </div>
+                    <div class="col-md-4" id="name-div">
+                        <h5>{{ item.name}}</h5>
+                    </div>
+                    <div class="col-md-4" id="align-right">
+                        <h5>{{ item.price | currency }}</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div ng-show="showDetails == true" id="item-details">
+                        <div id="details-div"> 
+                            <h5>Prekės aprašymas: </h5>
+                            <h6>{{ item.details }}</h6>
+                        </div>
+                        <button ng-click="deleteItem(item)" class="btn btn-danger" id="delete-btn">Panaikiti prekę</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="form">
+        <h3>Pridėti naują prekę</h3>
+        <form>
+            <div class="form-group">
+                <label>Prekės pavadinimas</label>
+                <input type="text" class="form-control" placeholder="Pavadinimas" ng-model="newItem.name">
+            </div>
+            <div class="form-group">
+                <label>Prekės kaina</label>
+                <input type="text" class="form-control" placeholder="0.00" ng-model="newItem.price">
+            </div>
+            <div class="form-group">
+                <label>Prekės aprašymas</label>
+                <textarea class="form-control" placeholder="Aprašymas" rows="4" cols="50" ng-model="newItem.details"></textarea>
+            </div>
+            <button ng-click="addItem(newItem)" type="submit" class="btn btn-success">Pridėti prekę</button>
+        </form>
+    </div>
+
+    <div>
+        <button ng-click="populateList()" class="btn btn-primary">Atnaujinti</button>
+    </div>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+<script src="app.js"></script>
+<script src="scripts/itemController.js"></script>
+<script src="scripts/itemFactory.js"></script>
+
+</html>
